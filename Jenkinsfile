@@ -17,7 +17,7 @@ pipeline {
    
         stage('Fetch code') {
             steps {
-               git branch: 'docker', url: 'https://github.com/hkhcoder/vprofile-project.git'
+               git branch: 'main', url: 'https://github.com/tcollins520/cicd-jenkins-aws-ecs-vprofileapp.git'
             }
 
         }
