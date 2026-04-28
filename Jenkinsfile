@@ -85,18 +85,33 @@ pipeline {
                 sh 'docker rmi -f $(docker images "${imageName}" -q) || true'
             }
         }
-
         stage('Deploy to ECS') {
             steps {
                 withAWS(credentials: 'awscreds', region: 'us-east-1') {
-                    sh """
-                    aws ecs update-service \
-                      --cluster ${cluster} \
-                      --service ${service} \
-                      --force-new-deployment
-                    """
-                }
-            }
-        }
+                sh '''
+                IMAGE_TAG=${BUILD_NUMBER}
+
+                TASK_DEF_NAME="vprofileapptask"
+
+                TASK_DEF=$(aws ecs describe-task-definition \
+                    --task-definition $TASK_DEF_NAME \
+                    --query taskDefinition)
+
+                NEW_TASK_DEF=$(echo $TASK_DEF | jq --arg IMAGE "${IMAGE_NAME}:$IMAGE_TAG" '
+                    .containerDefinitions[0].image=$IMAGE |
+                    del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)
+                ')
+
+                echo $NEW_TASK_DEF > new-task-def.json
+
+                aws ecs register-task-definition \
+                    --cli-input-json file://new-task-def.json
+
+                aws ecs update-service \
+                    --cluster ${cluster} \
+                    --service ${service} \
+                    --force-new-deployment
+                '''
     }
+  }
 }
