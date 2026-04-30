@@ -64,7 +64,3 @@ ________________________________________
 👩🏽‍💻 Author
 Tina Collins
 
-
-
-
-# cicd-jenkins-pipeline-aws-ecs
