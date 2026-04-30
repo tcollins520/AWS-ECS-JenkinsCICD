@@ -61,6 +61,9 @@ ________________________________________
 •	Kubernetes (EKS) deployment with Helm
 •	GitHub Actions pipeline implementation
 ________________________________________
+📊 Architecture
+GitHub → Jenkins → Maven → SonarQube → Docker → ECR → ECS / EKS → Users
+________________________________________
 👩🏽‍💻 Author
 Tina Collins
 
