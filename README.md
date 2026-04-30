@@ -2,12 +2,14 @@ End-to-End CI/CD Pipeline with Jenkins, Docker, and AWS ECS
 
 This project demonstrates a production-style CI/CD pipeline that automates the build, test, code analysis, containerization, and deployment of a Java web application to Amazon ECS.
 The pipeline ensures reliable, repeatable, and version-controlled deployments using Jenkins and AWS services.
-
+________________________________________
+📊 Architecture
+GitHub → Jenkins → Maven → SonarQube → Docker → ECR → ECS / EKS → Users
+________________________________________
 # Prerequisites
 - JDK 21 
 - Maven 3.9 
 - MySQL 8
-
 ________________________________________
 🧰 Tech Stack
 •	Jenkins (CI/CD automation)
@@ -60,9 +62,7 @@ ________________________________________
 •	Infrastructure provisioning using Terraform
 •	Kubernetes (EKS) deployment with Helm
 •	GitHub Actions pipeline implementation
-________________________________________
-📊 Architecture
-GitHub → Jenkins → Maven → SonarQube → Docker → ECR → ECS / EKS → Users
+
 ________________________________________
 👩🏽‍💻 Author
 Tina Collins
