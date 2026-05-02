@@ -1,6 +1,6 @@
 # multistage dockerfile to build and run tomcat app
 
-# ---------- Stage 1: Build ----------
+# ---------- Stage 1: Build Artifact ----------
 FROM maven:3.9.9-eclipse-temurin-21-jammy AS build_image
 
 WORKDIR /vprofile-project
@@ -10,7 +10,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 
-# ---------- Stage 2: Run ----------
+# ---------- Stage 2: Run app ----------
 FROM tomcat:9-jdk21
 
 RUN rm -rf /usr/local/tomcat/webapps/*
