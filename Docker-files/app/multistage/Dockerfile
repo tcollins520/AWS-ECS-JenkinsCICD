@@ -15,6 +15,7 @@ FROM tomcat:9-jdk21
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
+# copy app to tomcat default directory
 COPY --from=build_image /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
