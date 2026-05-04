@@ -94,7 +94,7 @@ pipeline {
                     sh """
                     IMAGE_TAG=${BUILD_NUMBER}
                     IMAGE_NAME=${imageName}
-                    TASK_DEF_NAME="vprofileapptask"
+                    TASK_DEF_NAME="vproapptask"
 
                     TASK_DEF=\$(aws ecs describe-task-definition \
                         --task-definition \$TASK_DEF_NAME \
