@@ -8,7 +8,7 @@ pipeline {
 
     environment {
         registryCredential = 'ecr:us-east-1:awscreds'
-        imageName = "788143860357.dkr.ecr.us-east-1.amazonaws.com/vproappimg520:3"
+        imageName = "788143860357.dkr.ecr.us-east-1.amazonaws.com/vproappimg520:latest"
         vprofileRegistry = "https://788143860357.dkr.ecr.us-east-1.amazonaws.com"
         cluster = "vprofile-tc"
         service = "vprofileappsvc"
