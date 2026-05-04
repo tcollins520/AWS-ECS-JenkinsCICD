@@ -10,8 +10,8 @@ pipeline {
         registryCredential = 'ecr:us-east-1:awscreds'
         imageName = "788143860357.dkr.ecr.us-east-1.amazonaws.com/vproappimg520"
         vprofileRegistry = "https://788143860357.dkr.ecr.us-east-1.amazonaws.com"
-        cluster = "vprofile-tc"
-        service = "vprofileappsvc"
+        cluster = "ecs-cluster-vproapp"
+        service = "vproapptask-service-swlx7666"
     }
 
     stages {
@@ -88,7 +88,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to ECS') {
+        stage('Deploy to  Staging ECS') {
             steps {
                 withAWS(credentials: 'awscreds', region: 'us-east-1') {
                     sh """
